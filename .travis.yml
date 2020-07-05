@@ -2,6 +2,8 @@ sudo: required
 language: generic
 services:
    - docker
+script:
+   - cd section6/frontend/
 
 before_install:
    - docker build -t arindam14783/frontendtest -f Dockerfile.dev . 
