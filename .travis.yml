@@ -1,0 +1,21 @@
+sudo: required
+language: generic
+services:
+   - docker
+before_install:
+   - cd section6/frontend
+   - docker build -t arindam14783/frontendtest -f Dockerfile.dev . 
+
+script:
+   - docker run -e CI=true arindam14783/frontendtest npm run test
+deploy:
+   provider: elasticbeanstalk
+   region: "us-west-2"
+   app: "docker-kuber-react"
+   env: "DockerKuberReact-env"
+   bucket_name: "elasticbeanstalk-us-west-2-716322363208" 
+   bucket_path: "docker-kuber-react"
+   on:
+     branch: featureBuildCustomImages
+   access_key_id: $AWS_ACCESS_KEY
+   secret_access_key: $AWS_SECRET_KEY
