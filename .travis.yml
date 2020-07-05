@@ -18,5 +18,5 @@ deploy:
    on:
      branch: featureBuildCustomImages
    access_key_id: $AWS_ACCESS_KEY
-   secrect_access_key: 
+   secret_access_key: 
      secret : "$AWS_SECRET_KEY"
