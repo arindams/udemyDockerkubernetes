@@ -4,7 +4,7 @@ services:
    - docker
 before_install:
    - cd section6/frontend
-   - docker build -t arindam14783/frontendtest -f Dockerfile.dev . 
+   - docker build -t arindam14783/frontendtest -f Dockerfile . 
 
 script:
    - docker run -e CI=true arindam14783/frontendtest npm run test
