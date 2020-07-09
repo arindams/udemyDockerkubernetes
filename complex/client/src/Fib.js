@@ -1,7 +1,7 @@
-import Rect, {Componenet} from 'react';
+import React, {Componenet} from 'react';
 import axios from 'axios';
 
-class Fib extends Componenet{
+class Fib extends Component{
  state = {
    seenIndexes: [],
    values: {},
@@ -70,14 +70,8 @@ class Fib extends Componenet{
     <h3>Calculated values </h3>
     {this.renderValues()}
     </div>    
-
-
   );
- 
-
  }
-
-
 }
 
-export defaut Fib;
+export default Fib;
