@@ -3,16 +3,21 @@ language: generic
 services:
    - docker
 before_install:
-   - docker build -t arindam14783/multi-client -f ./complex/client/Dockerfile.dev . 
+   - cd complex/client
+   - docker build -t arindam14783/multi-client -f Dockerfile.dev . 
 
 script:
    - docker run -e CI=true arindam14783/multi-client npm test
 
 after_success:
-   - docker build -t  arindam14783/multi-client ./complex/client
-   - docker build -t  arindam14783/multi-nginx ./complex/nginx
-   - docker build -t  arindam14783/multi-server ./complex/server
-   - docker build -t  arindam14783/multi-worker ./complex/worker
+   - cd complex/client
+   - docker build -t  arindam14783/multi-client .
+   - cd complex/mginx
+   - docker build -t  arindam14783/multi-nginx .
+   - cd complex/server
+   - docker build -t  arindam14783/multi-server .
+   - cd complex/worker
+   - docker build -t  arindam14783/multi-worker .
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
    - docker push arindam14783/multi-client
    - docker push arindam14783/multi-nginx
