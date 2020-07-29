@@ -12,8 +12,11 @@ script:
 after_success:
    - cd complex/client
    - docker build -t  arindam14783/multi-client .
+   - cd ../nginx
    - docker build -t  arindam14783/multi-nginx .
+   - cd ../server
    - docker build -t  arindam14783/multi-server .
+   - cd ../worker
    - docker build -t  arindam14783/multi-worker .
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
    - docker push arindam14783/multi-client
