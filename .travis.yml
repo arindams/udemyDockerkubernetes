@@ -23,6 +23,7 @@ after_success:
    - docker push arindam14783/multi-nginx
    - docker push arindam14783/multi-server
    - docker push arindam14783/multi-worker
+   - cd ../..
 
 deploy:
   provider: elasticbeanstalk
