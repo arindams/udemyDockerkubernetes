@@ -7,7 +7,7 @@ services:
         - client 
       restart: always
       build:
-        dockerfile: Dockerfile.dev
+        dockerfile: Dockerfile
         context: ./nginx
       ports:
         - '3050:80'
@@ -21,7 +21,7 @@ services:
       depends_on:
         - postgres
       build:
-        dockerfile: Dockerfile.dev
+        dockerfile: Dockerfile
         context: ./server
       volumes:
         - /app/node_modules
@@ -36,7 +36,7 @@ services:
         - PGPORT=5432  
    client:
        build:
-         dockerfile: Dockerfile.dev
+         dockerfile: Dockerfile
          context: ./client
        volumes:
          - /app/node_modules
@@ -44,7 +44,7 @@ services:
        stdin_open: true
    worker:
        build:
-         dockerfile: Dockerfile.dev
+         dockerfile: Dockerfile
          context: ./worker
        volumes:
          - /app/node_modules
